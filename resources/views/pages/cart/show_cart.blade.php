@@ -132,7 +132,18 @@
 							<li>Thành tiền <span>{{Cart::total(0,',','.')}}$</span></li>
 						</ul>
 							{{-- <a class="btn btn-default update" href="">Update</a> --}}
-							<a class="btn btn-default check_out" href="{{URL::to('/login-checkout')}}">Thanh toán</a>
+							<?php
+									$customer_id = Session::get('customer_id');
+									if($customer_id != NULL){
+								?>
+										<a class="btn btn-default check_out" href="{{URL::to('/checkout')}}">Thanh toán</a>
+								<?php
+									}else {
+								?>
+										<a class="btn btn-default check_out" href="{{URL::to('/login-checkout')}}">Thanh toán</a>
+								<?php
+									}
+								?>
 					</div>
 				</div>
 			</div>

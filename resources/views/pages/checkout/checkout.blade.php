@@ -19,7 +19,7 @@
 			<div class="shopper-informations">
 				<div class="row">
 					
-					<div class="col-sm-5 clearfix">
+					<div class="col-sm-12 clearfix">
 						<div class="bill-to">
 							<p>Thông tin hóa đơn thanh toán</p>
 							<div class="form-one">
@@ -29,19 +29,13 @@
 									<input type="text" name="shipping_email" placeholder="Email*">
 									<input type="text" name="shipping_address" placeholder="Địa chỉ*">
 									<input type="text" name="shipping_phone" placeholder="SĐT*">
+									<textarea name="shipping_notes" placeholder="Ghi chú đơn hàng" rows="16"></textarea>
                                     <input type="submit" value="Gửi" name="send_order" class="btn btn-primary btn-sm">
 								</form>
 							</div>
 							
 						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="order-message">
-							<p>Ghi chú</p>
-							<textarea name="message"  placeholder="Ghi chú đơn hàng" rows="16"></textarea>
-							{{-- <label><input type="checkbox"> Shipping to bill address</label> --}}
-						</div>	
-					</div>					
+					</div>				
 				</div>
 			</div>
 			<div class="review-payment">
