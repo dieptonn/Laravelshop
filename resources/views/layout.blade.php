@@ -18,10 +18,10 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->       
     <link rel="shortcut icon" href="{{('public/FrontEnd/images/ico/favicon.ico')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{('public/FrontEnd/images/ico/apple-touch-icon-144-precomposed.png')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{('public/FrontEnd/images/ico/apple-touch-icon-114-precomposed.png')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{('public/FrontEnd/images/ico/apple-touch-icon-72-precomposed.png')}}">
-    <link rel="apple-touch-icon-precomposed" href="{{('public/FrontEnd/images/ico/apple-touch-icon-57-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('public/FrontEnd/images/ico/apple-touch-icon-144-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('public/FrontEnd/images/ico/apple-touch-icon-114-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('public/FrontEnd/images/ico/apple-touch-icon-72-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" href="{{asset('public/FrontEnd/images/ico/apple-touch-icon-57-precomposed.png')}}">
 </head><!--/head-->
 
 <body>
@@ -57,7 +57,7 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="{{URL::to('/trangchu')}}"><img src="{{('public/FrontEnd/images/logo.png')}}" alt="" /></a>
+							<a href="{{URL::to('/trangchu')}}"><img src="{{asset('public/FrontEnd/images/logo.png')}}" alt="" /></a>
 						</div>
 						<div class="btn-group pull-right">
 							<div class="btn-group">
@@ -89,13 +89,21 @@
 								{{-- <li><a href="{{URL::to('/login-checkout')}}"><i class="fa fa-user"></i> Tài khoản</a></li> --}}
 								<?php
 									$customer_id = Session::get('customer_id');
-									if($customer_id != NULL){
+									$shipping_id = Session::get('shipping_id');
+									
+									if($customer_id != NULL && $shipping_id == NULL){
 								?>
 										<li><a href="{{URL::to('/checkout')}}"><i class="fa fa-crosshairs"></i> Thanh toán</a></li>
 								<?php
+											
+									}elseif($customer_id != NULL && $shipping_id != NULL){
+								?>
+										<li><a href="{{URL::to('/payment')}}"><i class="fa fa-crosshairs"></i> Thanh toán</a></li>
+								<?php
+									
 									}else {
 								?>
-										<li><a href="{{URL::to('/login-checkout')}}"><i class="fa fa-lock"></i> Thanh toán</a></li>
+										<li><a href="{{URL::to('/login-checkout')}}"><i class="fa fa-crosshairs"></i> Thanh toán</a></li>
 								<?php
 									}
 								?>
@@ -127,7 +135,7 @@
 		<div class="header-bottom"><!--header-bottom-->
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-9">
+					<div class="col-sm-8">
 						<div class="navbar-header">
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 								<span class="sr-only">Toggle navigation</span>
@@ -159,10 +167,14 @@
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
+					<div class="col-sm-4">
+						<form action="{{URL::to('/search')}}" method="post">
+							{{ csrf_field() }}
+							<div style="display: inline-flex" class="search_box pull-right">
+							<input type="text" name="keyword" placeholder="Tìm kiếm"/>
+							<input type="submit" style="margin-left: 3px" name="search_items" class="btn btn-info btn-sm" value="search">
 						</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -189,8 +201,8 @@
 									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
 								<div class="col-sm-6">
-									<img src="{{('public/FrontEnd/images/girl1.jpg')}}" class="girl img-responsive" alt="" />
-									<img src="{{('public/FrontEnd/images/pricing.png')}}"  class="pricing" alt="" />
+									<img src="{{asset('public/FrontEnd/images/girl1.jpg')}}" class="girl img-responsive" alt="" />
+									<img src="{{asset('public/FrontEnd/images/pricing.png')}}"  class="pricing" alt="" />
 								</div>
 							</div>
 							<div class="item">
@@ -201,8 +213,8 @@
 									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
 								<div class="col-sm-6">
-									<img src="{{('public/FrontEnd/images/girl2.jpg')}}" class="girl img-responsive" alt="" />
-									<img src="{{('public/FrontEnd/images/pricing.png')}}"  class="pricing" alt="" />
+									<img src="{{asset('public/FrontEnd/images/girl2.jpg')}}" class="girl img-responsive" alt="" />
+									<img src="{{asset('public/FrontEnd/images/pricing.png')}}"  class="pricing" alt="" />
 								</div>
 							</div>
 							
@@ -214,8 +226,8 @@
 									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
 								<div class="col-sm-6">
-									<img src="{{('public/FrontEnd/images/girl3.jpg')}}" class="girl img-responsive" alt="" />
-									<img src="{{('public/FrontEnd/images/pricing.png')}}" class="pricing" alt="" />
+									<img src="{{asset('public/FrontEnd/images/girl3.jpg')}}" class="girl img-responsive" alt="" />
+									<img src="{{asset('public/FrontEnd/images/pricing.png')}}" class="pricing" alt="" />
 								</div>
 							</div>
 							
@@ -318,7 +330,7 @@
 							<div class="video-gallery text-center">
 								<a href="#">
 									<div class="iframe-img">
-										<img src="{{('public/FrontEnd/images/iframe2.png')}}" alt="" />
+										<img src="{{asset('public/FrontEnd/images/iframe2.png')}}" alt="" />
 									</div>
 									<div class="overlay-icon">
 										<i class="fa fa-play-circle-o"></i>
@@ -333,7 +345,7 @@
 							<div class="video-gallery text-center">
 								<a href="#">
 									<div class="iframe-img">
-										<img src="{{('public/FrontEnd/images/iframe3.png')}}" alt="" />
+										<img src="{{asset('public/FrontEnd/images/iframe3.png')}}" alt="" />
 									</div>
 									<div class="overlay-icon">
 										<i class="fa fa-play-circle-o"></i>
@@ -348,7 +360,7 @@
 							<div class="video-gallery text-center">
 								<a href="#">
 									<div class="iframe-img">
-										<img src="{{('public/FrontEnd/images/iframe4.png')}}" alt="" />
+										<img src="{{asset('public/FrontEnd/images/iframe4.png')}}" alt="" />
 									</div>
 									<div class="overlay-icon">
 										<i class="fa fa-play-circle-o"></i>
@@ -361,7 +373,7 @@
 					</div>
 					<div class="col-sm-3">
 						<div class="address">
-							<img src="{{('images/map.png')}}" alt="" />
+							<img src="{{asset('images/map.png')}}" alt="" />
 							<p>505 S Atlantic Ave Virginia Beach, VA(Virginia)</p>
 						</div>
 					</div>

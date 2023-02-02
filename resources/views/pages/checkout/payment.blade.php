@@ -10,39 +10,11 @@
 				</ol>
 			</div><!--/breadcrums-->
 
-			
-
-			<div class="register-req">
-				<p>Làm ơn đăng ký hoặc đăng nhập để thanh toán giỏ hàng và xem lịch sử mua hàng</p>
-			</div><!--/register-req-->
-
-			<div class="shopper-informations">
-				<div class="row">
-					
-					<div class="col-sm-12 clearfix">
-						<div class="bill-to">
-							<p>Thông tin hóa đơn thanh toán</p>
-							<div class="form-one">
-								<form method="POST" action="{{URL::to('/save-checkout-customer')}}">
-                                    {{ csrf_field() }}
-									<input type="text" name="shipping_name" placeholder="Họ tên*">
-									<input type="text" name="shipping_email" placeholder="Email*">
-									<input type="text" name="shipping_address" placeholder="Địa chỉ*">
-									<input type="text" name="shipping_phone" placeholder="SĐT*">
-									<textarea name="shipping_notes" placeholder="Ghi chú đơn hàng" rows="16"></textarea>
-                                    <input type="submit" value="Gửi" name="send_order" class="btn btn-primary btn-sm">
-								</form>
-							</div>
-							
-						</div>
-					</div>				
-				</div>
-			</div>
 			<div class="review-payment">
 				<h2>Xem lại giỏ hàng</h2>
 			</div>
 
-			<div class="table-responsive cart_info">
+            <div class="table-responsive cart_info">
 				{{-- {{$content = Cart::content()}} --}}
 				<?php
 					$content = Cart::content();
@@ -94,15 +66,17 @@
 					</tbody>
 				</table>
 			</div>
-			{{-- <div class="payment-options">
+			<div class="payment-options">
 					<span>
-						<label><input name="payment_option" value="1" type="checkbox"> Thanh toán bằng ATM</label>
+						<label><input name="payment_option" value="1" type="checkbox"> Thanh toán bằng tài khoản</label>
 					</span>
 					<span>
 						<label><input name="payment_option" value="2" type="checkbox"> Thanh toán bằng tiền mặt</label>
 					</span>
-					
-				</div> --}}
+					<span>
+						<label><input name="payment_option" value="2" type="checkbox"> Thanh toán bằng thẻ ghi nợ</label>
+					</span>
+				</div> 
 		</div>
 	</section> <!--/#cart_items-->
 @endsection

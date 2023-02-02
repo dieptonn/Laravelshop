@@ -26,7 +26,7 @@ class CheckoutController extends Controller
         $data = array();
         $data['customer_name'] = $request->customer_name;
         $data['customer_email'] = $request->customer_email;
-        $data['customer_password'] = $request->customer_password;
+        $data['customer_password'] = md5($request->customer_password);
         $data['customer_phone'] = $request->customer_phone;
 
         $customer_id= DB::table('tbl_customers')->insertGetId($data);
@@ -60,6 +60,28 @@ class CheckoutController extends Controller
         return Redirect::to('/payment');
     }
     public function payment(){
-        echo 'hi';
+        $cate_product = DB::table('tbl_category_product')->where('category_status','1')->orderby('category_id','desc')->get();
+        $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderby('brand_id','desc')->get();
+        return view('pages.checkout.payment',[
+            'cate_product'=> $cate_product,
+            'brand_product'=>$brand_product,
+        ]);
+    }
+    public function logout_checkout(){
+        Session::flush(); // xóa dữ liệu phiên
+        return Redirect::to('/login-checkout');
+    }
+    public function login_customer(Request $request){
+        $customer_email = $request->email_account;
+        $customer_password = md5($request->password_account);
+        $result = DB::table('tbl_customers')->where('customer_email', $customer_email)->where('customer_password', $customer_password)->first();
+
+        if($result){
+            Session::put('customer_id',$result->customer_id);
+            return Redirect::to('checkout');
+        }else{
+            return Redirect::back(); // nên back hay nên trả về trang chủ hoặc giỏ hàng hơn?
+        }
+
     }
 }
