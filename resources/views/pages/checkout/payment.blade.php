@@ -11,7 +11,7 @@
 			</div><!--/breadcrums-->
 
 			<div class="review-payment">
-				<h2>Xem lại giỏ hàng</h2>
+				<h2>Giỏ hàng</h2>
 			</div>
 
             <div class="table-responsive cart_info">
@@ -66,17 +66,22 @@
 					</tbody>
 				</table>
 			</div>
-			<div class="payment-options">
+			<h4 style="margin:40px 0; font-size:20px">Chọn hình thức thanh toán</h4>
+			<form action="{{URL::to('/order-place')}}" method="post">
+				{{ csrf_field() }}
+				<div  class="payment-options">
 					<span>
-						<label><input name="payment_option" value="1" type="checkbox"> Thanh toán bằng tài khoản</label>
+						<label><input name="payment_option" value="1" type="checkbox"> Thanh toán bằng thẻ ATM</label>
 					</span>
 					<span>
 						<label><input name="payment_option" value="2" type="checkbox"> Thanh toán bằng tiền mặt</label>
 					</span>
 					<span>
-						<label><input name="payment_option" value="2" type="checkbox"> Thanh toán bằng thẻ ghi nợ</label>
+						<label><input name="payment_option" value="3" type="checkbox"> Thanh toán bằng thẻ ghi nợ</label>
 					</span>
+					<input style="margin-top:-10px; width:10%" type="submit" value="Đặt hàng" name="send_order_place" class="btn btn-primary btn-sm">
 				</div> 
+			</form>
 		</div>
 	</section> <!--/#cart_items-->
 @endsection

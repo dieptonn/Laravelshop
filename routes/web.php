@@ -66,7 +66,7 @@ Route::post('/update-product/{product_id}',[ProductController::class,'update_pro
 Route::get('/delete-product/{product_id}',[ProductController::class,'delete_product']);
 Route::get('/active-product/{product_id}',[ProductController::class,'active_product']);
 Route::get('/unactive-product/{product_id}',[ProductController::class,'unactive_product']);
-
+;
 //cart
 Route::post('/save-cart',[CartController::class,'save_cart']);
 Route::get('/show-cart',[CartController::class,'show_cart']);
@@ -81,4 +81,11 @@ Route::get('/checkout',[CheckoutController::class,'checkout']);
 Route::post('/save-checkout-customer',[CheckoutController::class,'save_checkout_customer']);
 Route::get('/payment',[CheckoutController::class,'payment']);
 Route::post('login-customer',[CheckoutController::class,'login_customer']);
+Route::post('/order-place',[CheckoutController::class,'order_place']);
+
+//orders;
+Route::get('/order-manager',[CheckoutController::class,'order_manager']);
+Route::get('/view-order/{orderId}',[CheckoutController::class,'view_order']);
+
+
 
