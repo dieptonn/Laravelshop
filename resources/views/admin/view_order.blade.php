@@ -5,7 +5,8 @@
     <div class="panel-heading">
       Thông tin khách hàng
     </div>
-    
+
+
     <div class="table-responsive">
                                     <?php   
                                     $message = Session::get('message');
@@ -26,11 +27,11 @@
           </tr>
         </thead>
         <tbody>
-
+              <?php $orders= $order_by_id[0] ?>
                 <tr>
                 
-                    <td>{{$order_by_id->customer_name}}</td>
-                    <td>{{$order_by_id->customer_phone}}</td>
+                    <td>{{$orders->customer_name}}</td>
+                    <td>{{$orders->customer_phone}}</td>
                     
                     <td>
                     <a style="margin-right:10px" href="" class="active" ui-toggle-class="">
@@ -66,7 +67,7 @@
         <thead>
           <tr>
             
-            <th>Tên người vận chuyển</th>
+            <th>Tên người nhận</th>
             <th>Địa chỉ</th>
             <th>Số điện thoại</th>
 
@@ -77,9 +78,9 @@
 
                 <tr>
                 
-                    <td>{{$order_by_id->shipping_name}}</td>
-                    <td>{{$order_by_id->shipping_address}}</td>
-                    <td>{{$order_by_id->shipping_phone}}</td>
+                    <td>{{$orders->shipping_name}}</td>
+                    <td>{{$orders->shipping_address}}</td>
+                    <td>{{$orders->shipping_phone}}</td>
                     
                     <td>
                     <a style="margin-right:10px" href="" class="active" ui-toggle-class="">
@@ -148,13 +149,14 @@
           </tr>
         </thead>
         <tbody>
-
-                <tr>
+               
+                @foreach ($order_by_id as $order)
+                    <tr>
                     <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-                    <td>{{$order_by_id->product_name}}</td>
-                    <td>{{$order_by_id->product_sales_quantity}}</td>
-                    <td>{{$order_by_id->product_price}}</td>
-                    <td>{{$order_by_id->order_total}}</td>
+                    <td>{{$order->product_name}}</td>
+                    <td>{{$order->product_sales_quantity}}</td>
+                    <td>{{$order->product_price}}</td>
+                    <td>{{$order->order_total}}</td>
                     
                     <td>
                     <a style="margin-right:10px" href="" class="active" ui-toggle-class="">
@@ -163,6 +165,7 @@
                       <i class="fa fa-times text-danger text"></i></a>
                     </td>
                 </tr>
+                @endforeach
 
           
         </tbody>

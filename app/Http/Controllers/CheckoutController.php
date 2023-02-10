@@ -157,17 +157,10 @@ class CheckoutController extends Controller
         ->join('tbl_shipping','tbl_shipping.shipping_id','=','tbl_order.shipping_id')
         ->join('tbl_order_details','tbl_order_details.order_id','=','tbl_order.order_id')
         ->select('tbl_order.*','tbl_customers.*','tbl_shipping.*','tbl_order_details.*')
-        ->first();
-        dd($order_by_id);
-        $order_by_id1 = DB::table('tbl_order')->where('tbl_order.order_id',$orderId)
-        ->join('tbl_customers','tbl_customers.customer_id','=','tbl_order.customer_id')
-        ->join('tbl_shipping','tbl_shipping.shipping_id','=','tbl_order.shipping_id')
-        ->join('tbl_order_details','tbl_order_details.order_id','=','tbl_order.order_id')
-        ->select('tbl_order.*','tbl_customers.*','tbl_shipping.*','tbl_order_details.*')
         ->get();
-        dd($order_by_id1);
+        // dd($order_by_id);
 
         // $maneger_order = view('admin.all_product')->with('all_product',$all_product);
-        return view('admin.view_order')->with('order_by_id',$order_by_id);
+        return view('admin.view_order',['order_by_id' => $order_by_id]);
     }
 }
