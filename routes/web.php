@@ -72,6 +72,8 @@ Route::post('/save-cart',[CartController::class,'save_cart']);
 Route::get('/show-cart',[CartController::class,'show_cart']);
 Route::get('/delete-to-cart/{rowId}',[CartController::class,'delete_to_cart']);
 Route::post('/update-cart-quantity',[CartController::class,'update_cart_quantity']);
+Route::post('/add-cart-ajax',[CartController::class,'add_cart_ajax']);
+Route::get('show-cart-ajax',[CartController::class,'show_cart_ajax']);
 
 //checkout
 Route::get('/login-checkout',[CheckoutController::class,'login_checkout']);
