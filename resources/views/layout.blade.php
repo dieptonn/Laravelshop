@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | DIEPTON-Shopper</title>
+    <title>Trang chủ | LPTIPSHOP</title>
     <link href="{{asset('public/FrontEnd/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('public/FrontEnd/css/prettyPhoto.css')}}" rel="stylesheet">
     <link href="{{asset('public/FrontEnd/css/price-range.css')}}" rel="stylesheet">
@@ -15,44 +15,12 @@
     <link href="{{asset('public/FrontEnd/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('public/FrontEnd/css/sweetalert.css')}}" rel="stylesheet">
 
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->       
-    <link rel="shortcut icon" href="{{('public/FrontEnd/images/ico/favicon.ico')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('public/FrontEnd/images/ico/apple-touch-icon-144-precomposed.png')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('public/FrontEnd/images/ico/apple-touch-icon-114-precomposed.png')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('public/FrontEnd/images/ico/apple-touch-icon-72-precomposed.png')}}">
-    <link rel="apple-touch-icon-precomposed" href="{{asset('public/FrontEnd/images/ico/apple-touch-icon-57-precomposed.png')}}">
+
 </head><!--/head-->
 
 <body>
 	<header id="header"><!--header-->
-		<div class="header_top"><!--header_top-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="contactinfo">
-							<ul class="nav nav-pills">
-								<li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-								<li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="social-icons pull-right">
-							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/header_top-->
+		
 
 		<div class="header-middle"><!--header-middle-->
 			<div class="container">
@@ -61,29 +29,7 @@
 						<div class="logo pull-left">
 							<a href="{{URL::to('/trangchu')}}"><img src="{{asset('public/FrontEnd/images/logo.png')}}" alt="" /></a>
 						</div>
-						<div class="btn-group pull-right">
-							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									USA
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">Canada</a></li>
-									<li><a href="#">UK</a></li>
-								</ul>
-							</div>
-							
-							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									DOLLAR
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">Canadian Dollar</a></li>
-									<li><a href="#">Pound</a></li>
-								</ul>
-							</div>
-						</div>
+						
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
@@ -149,15 +95,6 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="{{URL::to('/trangchu')}}" class="active">Trang chủ</a></li>
-								<li class="dropdown"><a href="#">Sản phẩm<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-										<li><a href="checkout.html">Checkout</a></li> 
-										<li><a href="cart.html">Cart</a></li> 
-										<li><a href="login.html">Login</a></li> 
-                                    </ul>
-                                </li> 
 								<li class="dropdown"><a href="#">Tin tức<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="blog.html">Blog List</a></li>
@@ -197,39 +134,47 @@
 						<div class="carousel-inner">
 							<div class="item active">
 								<div class="col-sm-6">
-									<h1><span>DIEPTON</span>-SHOPPER</h1>
-									<h2>Free DIEPTON-Commerce Template</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
+									<h1><span>LPTIP</span>-SHOP</h1>
+									<h2>Laptop gaming</h2>
+									<p>Laptop gaming hiệu năng siêu khủng, chiến mọi tựa game. </p>
+
 								</div>
 								<div class="col-sm-6">
-									<img src="{{asset('public/FrontEnd/images/girl1.jpg')}}" class="girl img-responsive" alt="" />
-									<img src="{{asset('public/FrontEnd/images/pricing.png')}}"  class="pricing" alt="" />
+									<img src="{{asset('public/FrontEnd/images/gaming.png')}}" class="girl img-responsive" alt="" />
 								</div>
 							</div>
 							<div class="item">
 								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER</h1>
-									<h2>100% Responsive Design</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
+									<h1><span>LPTIP</span>-SHOP</h1>
+									<h2>Laptop mỏng nhẹ - Windows</h2>
+									<p>Laptop mỏng nhẹ, thời trang, phong cách. </p>
+
 								</div>
 								<div class="col-sm-6">
-									<img src="{{asset('public/FrontEnd/images/girl2.jpg')}}" class="girl img-responsive" alt="" />
-									<img src="{{asset('public/FrontEnd/images/pricing.png')}}"  class="pricing" alt="" />
+									<img src="{{asset('public/FrontEnd/images/vanphong.png')}}" class="girl img-responsive" alt="" />
 								</div>
 							</div>
 							
 							<div class="item">
 								<div class="col-sm-6">
-									<h1><span>DIEPTON</span>-SHOPPER</h1>
-									<h2>Free Ecommerce Template</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
+									<h1><span>LPTIP</span>-SHOP</h1>
+									<h2>Macbook</h2>
+									<p>Các dòng macbook mới nhất từ Apple. </p>
+
 								</div>
 								<div class="col-sm-6">
-									<img src="{{asset('public/FrontEnd/images/girl3.jpg')}}" class="girl img-responsive" alt="" />
-									<img src="{{asset('public/FrontEnd/images/pricing.png')}}" class="pricing" alt="" />
+									<img src="{{asset('public/FrontEnd/images/macbook.png')}}" class="girl img-responsive" alt="" />
+								</div>
+							</div>
+							<div class="item">
+								<div class="col-sm-6">
+									<h1><span>LPTIP</span>-SHOP</h1>
+									<h2>Phụ kiện</h2>
+									<p>Phụ kiện máy tính: chuột, tai nghe gaming, bàn phím cơ Led RGB. </p>
+
+								</div>
+								<div class="col-sm-6">
+									<img src="{{asset('public/FrontEnd/images/phukien.png')}}" class="girl img-responsive" alt="" />
 								</div>
 							</div>
 							
@@ -472,13 +417,13 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('.add-to-cart').click(function(){
-				var id= $(this).data('id_product');
-				var cart_product_id = $('.cart_product_id_'+id).val();
-				var cart_product_name = $('.cart_product_name_'+id).val();
-				var cart_product_image = $('.cart_product_image_'+id).val();
-				var cart_product_price = $('.cart_product_price_'+id).val();
-				var cart_product_qty = $('.cart_product_qty_'+id).val();
-				var _token = $('input[name="_token"]').val();
+				// var id= $(this).data('id_product');
+				// var cart_product_id = $('.cart_product_id_'+id).val();
+				// var cart_product_name = $('.cart_product_name_'+id).val();
+				// var cart_product_image = $('.cart_product_image_'+id).val();
+				// var cart_product_price = $('.cart_product_price_'+id).val();
+				// var cart_product_qty = $('.cart_product_qty_'+id).val();
+				// var _token = $('input[name="_token"]').val();
 				// alert(cart_product_name);
 
 				// $.ajax({

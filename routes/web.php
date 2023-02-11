@@ -88,6 +88,8 @@ Route::post('/order-place',[CheckoutController::class,'order_place']);
 //orders;
 Route::get('/order-manager',[CheckoutController::class,'order_manager']);
 Route::get('/view-order/{orderId}',[CheckoutController::class,'view_order']);
+Route::get('/delete-order/{order_id}',[CheckoutController::class,'delete_order']);
+
 
 
 

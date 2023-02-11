@@ -34,11 +34,6 @@
                     <td>{{$orders->customer_phone}}</td>
                     
                     <td>
-                    <a style="margin-right:10px" href="" class="active" ui-toggle-class="">
-                      <i class="fa fa-eye text-success text-active"></i>
-                    <a onclick="return confirm('Are you sure to delete this category?')" href="" class="active" ui-toggle-class="">
-                      <i class="fa fa-times text-danger text"></i></a>
-                    </td>
                 </tr>
 
           
@@ -83,11 +78,7 @@
                     <td>{{$orders->shipping_phone}}</td>
                     
                     <td>
-                    <a style="margin-right:10px" href="" class="active" ui-toggle-class="">
-                      <i class="fa fa-eye text-success text-active"></i>
-                    <a onclick="return confirm('Are you sure to delete this category?')" href="" class="active" ui-toggle-class="">
-                      <i class="fa fa-times text-danger text"></i></a>
-                    </td>
+                    
                 </tr>
 
           
@@ -159,11 +150,7 @@
                     <td>{{$order->order_total}}</td>
                     
                     <td>
-                    <a style="margin-right:10px" href="" class="active" ui-toggle-class="">
-                      <i class="fa fa-eye text-success text-active"></i>
-                    <a onclick="return confirm('Are you sure to delete this category?')" href="" class="active" ui-toggle-class="">
-                      <i class="fa fa-times text-danger text"></i></a>
-                    </td>
+                    
                 </tr>
                 @endforeach
 
