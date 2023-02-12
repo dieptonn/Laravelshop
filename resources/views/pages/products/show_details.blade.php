@@ -6,29 +6,9 @@
 						<div class="col-sm-5">
 							<div class="view-product">
 								<img src="{{asset('public/uploads/product/'.$details_product->product_image)}}" alt="" />
-								<h3>ZOOM</h3>
+								<h3>VIP</h3>
 							</div>
-							<div id="similar-product" class="carousel slide" data-ride="carousel">
-								
-								  <!-- Wrapper for slides -->
-								    <div class="carousel-inner">
-										<div class="item active">
-										  <a href=""><img src="{{asset('public/FrontEnd/images/similar1.jpg')}}" alt=""></a>
-										  <a href=""><img src="{{asset('public/FrontEnd/images/similar2.jpg')}}" alt=""></a>
-										  <a href=""><img src="{{asset('public/FrontEnd/images/similar3.jpg')}}" alt=""></a>
-										</div>
-										
-										
-									</div>
-
-								  <!-- Controls -->
-								  <a class="left item-control" href="#similar-product" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								  </a>
-								  <a class="right item-control" href="#similar-product" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								  </a>
-							</div>
+							
 
 						</div>
 						<div class="col-sm-7">
@@ -37,14 +17,19 @@
 								<h2>{{$details_product->product_name}}</h2>
 								<p>ID: {{$details_product->product_id}}</p>
 								<img src="images/product-details/rating.png" alt="" />
-								<form action="{{URL::to('/save-cart')}}" method="POST">
-									{{ csrf_field() }}
+								<form >
+									@csrf
 									<span  >
-									<span>{{number_format($details_product->product_price)}}$</span>
+									<span>{{number_format($details_product->product_price)}} VNĐ</span>
 									<label>Số lượng: </label>
-									<input name="qty" type="number" min="1" value="1" />
-									<input name="productid_hidden" type="hidden" value="{{$details_product->product_id}}" />
-									<button type="submit" class="btn btn-fefault cart">
+									{{-- <input name="qty" type="number" min="1" value="1" />
+									<input name="productid_hidden" type="hidden" value="{{$details_product->product_id}}" /> --}}
+									<input type="hidden" value="{{$details_product->product_id}}" class="cart_product_id_{{$details_product->product_id}}">
+												<input type="hidden" value="{{$details_product->product_name}}" class="cart_product_name_{{$details_product->product_id}}">
+												<input type="hidden" value="{{$details_product->product_image}}" class="cart_product_image_{{$details_product->product_id}}">
+												<input type="hidden" value="{{$details_product->product_price}}" class="cart_product_price_{{$details_product->product_id}}">
+												<input type="hidden" value="1" class="cart_product_qty_{{$details_product->product_id}}">
+									<button style="margin-bottom: 10px" type="button" class="btn btn-default add-to-cart" data-id_product="{{$details_product->product_id}}" name="add-to-cart">Thêm vào giỏ hàng</button>
 										<i class="fa fa-shopping-cart"></i>
 										Thêm giỏ hàng
 									</button>

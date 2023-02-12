@@ -4,7 +4,7 @@
 		<div class="container">
 			<div class="breadcrumbs">
 				<ol class="breadcrumb">
-				  <li><a href="#">Trang chủ</a></li>
+				  <li><a href="{{URL::to('/')}}">Trang chủ</a></li>
 				  <li class="active">Giỏ hàng</li>
 				</ol>
 			</div>
@@ -20,7 +20,7 @@
 							<td class="description">Tên sản phẩm</td>
 							<td class="price">Giá</td>
 							<td class="quantity">Số lượng</td>
-							<td class="total">Tổng tiền</td>
+							<td class="total">Thành tiền</td>
 							<td></td>
 						</tr>
 					</thead>
@@ -35,7 +35,7 @@
 								<p>ID: {{$content->id}}</p>
 							</td>
 							<td class="cart_price">
-								<p>{{number_format($content->price)}}$</p>
+								<p>{{number_format($content->price)}} VNĐ</p>
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">

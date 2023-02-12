@@ -9,6 +9,7 @@ use App\Http\Controllers\BrandProduct;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,7 @@ Route::post('/search',[HomeController::class,'search']);
 // Danh mục sản phẩm trang chủ
 Route::get('/danh-muc-san-pham/{category_id}',[CategoryProduct::class,'show_category_home']);
 Route::get('/thuong-hieu-san-pham/{brand_id}',[BrandProduct::class,'show_brand_home']);
-Route::get('/chi-tiet-san-pham/{category_id}',[ProductController::class,'details_product']);
+Route::get('/chi-tiet-san-pham/{product_id}',[ProductController::class,'details_product']);
 
 
 // BackEnd
@@ -73,7 +74,13 @@ Route::get('/show-cart',[CartController::class,'show_cart']);
 Route::get('/delete-to-cart/{rowId}',[CartController::class,'delete_to_cart']);
 Route::post('/update-cart-quantity',[CartController::class,'update_cart_quantity']);
 Route::post('/add-cart-ajax',[CartController::class,'add_cart_ajax']);
-Route::get('show-cart-ajax',[CartController::class,'show_cart_ajax']);
+Route::get('/show-cart-ajax',[CartController::class,'show_cart_ajax']);
+Route::post('/update-cart-ajax',[CartController::class,'update_cart_ajax']);
+Route::get('/delete-cart-ajax/{session_id}',[CartController::class,'delete_cart_ajax']);
+Route::get('/delete-all-cart-ajax',[CartController::class,'delete_all_cart_ajax']);
+
+
+
 
 //checkout
 Route::get('/login-checkout',[CheckoutController::class,'login_checkout']);
@@ -89,6 +96,11 @@ Route::post('/order-place',[CheckoutController::class,'order_place']);
 Route::get('/order-manager',[CheckoutController::class,'order_manager']);
 Route::get('/view-order/{orderId}',[CheckoutController::class,'view_order']);
 Route::get('/delete-order/{order_id}',[CheckoutController::class,'delete_order']);
+
+
+//users
+Route::get('/show-info/{customer_id}',[UserController::class,'show_info']);
+
 
 
 

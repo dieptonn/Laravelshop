@@ -1177,7 +1177,7 @@ h2.title {
 
 .view-product img {
   border: 1px solid #F7F7F0;
-  height: 380px;
+  height: 300px;
   width: 100%;
 }
 
@@ -1547,15 +1547,15 @@ h2.title {
 }
 
 .breadcrumbs .breadcrumb li a:after {
-  content:"";
-  height:auto;
+  /* content:""; */
+  /* height:auto;
   width: auto;
   border-width: 8px;
   border-style: solid;
   border-color:transparent transparent transparent #0081C9;
   position: absolute;
   top: 11px;
-  left:48px;
+  left:48px; */
 
 }
 
@@ -2523,5 +2523,4 @@ h2.title {
 .contact-info .social-networks ul li a:hover{
   color: #0081C9;
 }
-
 

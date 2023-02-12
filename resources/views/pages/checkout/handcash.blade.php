@@ -4,7 +4,7 @@
     <section id="cart_items">
 		<div class="container">
             <div class="review-payment">
-			    <h2>Cảm ơn bạn đã đặt hàng, vui lòng kiểm tra email để cập nhật tình hình đơn hàng</h2>
+				<img style="height: 500px; width:80%" src="{{asset('public/FrontEnd/images/thanks.jpg')}}" alt="">
             </div>
 		</div>
 	</section> <!--/#cart_items-->

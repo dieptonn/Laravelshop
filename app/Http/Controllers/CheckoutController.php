@@ -52,6 +52,7 @@ class CheckoutController extends Controller
         return view('pages.checkout.checkout',[
             'cate_product'=> $cate_product,
             'brand_product'=>$brand_product,
+            
         ]);
     }
 
@@ -75,6 +76,7 @@ class CheckoutController extends Controller
         return view('pages.checkout.payment',[
             'cate_product'=> $cate_product,
             'brand_product'=>$brand_product,
+
         ]);
     }
     public function logout_checkout(){
@@ -88,7 +90,7 @@ class CheckoutController extends Controller
 
         if($result){
             Session::put('customer_id',$result->customer_id);
-            return Redirect::to('checkout');
+            return Redirect::to('/checkout');
         }else{
             return Redirect::back(); // nên back hay nên trả về trang chủ hoặc giỏ hàng hơn?
         }

@@ -64,16 +64,6 @@ class CartController extends Controller
             foreach($cart as $key => $val){
                 if($val['product_id']==$data['cart_product_id']){
                     $is_avaiable++;
-                    $cart[$key] = array(
-                    'session_id' => $val['session_id'],
-                    'product_name' => $val['product_name'],
-                    'product_id' => $val['product_id'],
-                    'product_image' => $val['product_image'],
-                    'product_quantity' => $val['product_quantity'],
-                    'product_qty' => $val['product_qty']+ $data['cart_product_qty'],
-                    'product_price' => $val['product_price'],
-                    );
-                    Session::put('cart',$cart);
                 }
             }
             if($is_avaiable == 0){
@@ -110,4 +100,44 @@ class CartController extends Controller
             'brand_product' => $brand_product,
         ]);
     }
+    
+    public function delete_cart_ajax($session_id){
+        $cart = Session::get('cart');
+        if($cart == true){
+            foreach($cart as $key => $val){
+                if($val['session_id'] == $session_id){
+                    unset($cart[$key]);
+                }
+            }
+            Session::put('cart', $cart);
+            return Redirect::back()->with('message',"Xóa sản phẩm thành công");
+        }else{
+            return Redirect::back()->with('message',"Xóa sản phẩm thất bại");
+        }
+    }
+    public function update_cart_ajax(Request $request){
+        $data = $request->all();
+        $cart = Session::get('cart');
+        if($cart == true){
+            foreach($data['cart_qty'] as $key => $qty){
+                foreach($cart  as $session => $val){
+                    if($val['session_id'] == $key){
+                        $cart[$session]['product_qty'] = $qty;
+                    }
+                }
+            }
+            Session::put('cart', $cart);
+            return Redirect::back()->with('message',"Cập nhật số lượng sản phẩm thành công");
+        }else{
+            return Redirect::back()->with('message',"Cập nhật số lượng sản phẩm thất bại");
+        }
+    }
+    public function delete_all_cart_ajax(){
+        $cart = Session::get('cart');
+        if($cart == true){
+            Session::forget('cart');
+            return Redirect::back()->with('message',"Xóa đơn hàng thành công");
+        }
+    }
+
 }
