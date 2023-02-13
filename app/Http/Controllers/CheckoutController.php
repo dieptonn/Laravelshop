@@ -105,11 +105,12 @@ class CheckoutController extends Controller
         $payment_id = DB::table('tbl_payment')->insertGetId($payment_data);
 
         //insert order
+        $total = Session::get('total');
         $order_data = array();
         $order_data['customer_id'] = Session::get('customer_id');
         $order_data['shipping_id'] = Session::get('shipping_id');
         $order_data['payment_id'] = $payment_id;
-        $order_data['order_total'] = Cart::total(0,',','.');
+        $order_data['order_total'] = $total;
         $order_data['order_status'] = 'Đang chờ xử lý';
         $order_id = DB::table('tbl_order')->insertGetId($order_data);
 

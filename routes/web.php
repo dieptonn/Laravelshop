@@ -100,6 +100,8 @@ Route::get('/delete-order/{order_id}',[CheckoutController::class,'delete_order']
 
 //users
 Route::get('/show-info/{customer_id}',[UserController::class,'show_info']);
+Route::post('/rate-comment/{product_id}',[UserController::class,'rate_comment']);
+
 
 
 

@@ -11,7 +11,7 @@
 			</div><!--/breadcrums-->
 
 			<div class="review-payment">
-				<h2>Giỏ hàng</h2>
+				<h2>Xem lại giỏ hàng</h2>
 			</div>
 
             <div class="table-responsive cart_info">
@@ -20,6 +20,8 @@
 					$content = Cart::content();
 				?>
 				<table class="table table-condensed">
+					<form style="display: inline-flex" action="{{URL::to('/update-cart-ajax')}}" method="post">
+						{{ csrf_field() }}
 					<thead>
 						<tr class="cart_menu">
 							<td class="image">Hình ảnh</td>
@@ -31,39 +33,57 @@
 						</tr>
 					</thead>
 					<tbody>
-						@foreach ($content as $key => $content)
-                            <tr style="margin: 10px">
-							<td style="margin:0%" class="cart_product">
-								<a href=""><img src="{{asset('public/uploads/product/'.$content->options->image)}}" width="100" alt=""></a>
+						@if(Session::get('cart') == true)
+                        <?php $total =0; ?>
+						@foreach (Session::get('cart') as $key => $cart)
+						<?php 
+							$subtotal = $cart['product_price']* $cart['product_qty'];
+							$total += $subtotal;
+						?>
+                            <tr style="margin:">
+							<td style="margin:" class="cart_product">
+								<a href=""><img src="{{asset('public/uploads/product/'.$cart['product_image'])}}" width="100" alt="{{$cart['product_name']}}"></a>
 							</td>
 							<td class="cart_description">
-								<h4><a href="">{{$content->name}}</a></h4>
-								<p>ID: {{$content->id}}</p>
+								<h4><a href=""></a></h4>
+								<p>ID: {{$cart['product_name']}}</p>
 							</td>
 							<td class="cart_price">
-								<p>{{number_format($content->price)}} VNĐ</p>
+								<p>{{number_format($cart['product_price'],0,',','.')}} VNĐ</p>
 							</td>
 							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<form style="display: inline-flex" action="{{URL::to('/update-cart-quantity')}}" method="post">
-										{{ csrf_field() }}
-									<input class="cart_quantity_input" type="text" name="quantity" value="{{$content->qty}}" autocomplete="off" size="2">
-										<input type="hidden" value="{{$content->rowId}}" name="rowId_cart" class="form-control">
-										<input type="submit" value="Cập nhật" name="update_qty" class="btn btn-default btn-sm">
-									</form>
+								<div class="cart_quantity_button">								
+									<input class="cart_quantity_input"  name="cart_qty[{{$cart['session_id']}}]" disabled value="{{$cart['product_qty']}}" >
+										
 								</div>
 							</td>
 							<td class="cart_total">
-								<p class="cart_total_price"><?php $subtotal= $content->price*$content->qty; echo number_format($subtotal)?>$</p>
+								<p class="cart_total_price">{{number_format($subtotal,0,',','.')}} VNĐ</p>
 							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href="{{URL::to('/delete-to-cart/'.$content->rowId)}}"><i class="fa fa-times"></i></a>
-							</td>
+							
 						</tr>
-                        @endforeach
-
 						
+                        @endforeach
+						<?php Session::put('total',$total) ?>
+						
+					<div style="padding: 30px" class="col-sm-6">
+					<div class="total_area">
+						<ul>
+							<li>Tổng tiền<span>{{number_format($total,0,',','.')}} VNĐ</span></li>
+
+							<li>Phí vận chuyển<span>Free</span></li>
+							<li>Thành tiền <span>{{number_format($total,0,',','.')}} VNĐ</span></li>
+							
+						</ul>
+								
+					</div>
+				</div>
+						@else
+						<td colspan="5"><center><?php echo "Làm ơn thêm sản phẩm vào giỏ"; ?></center></td>
+						@endif
+								
 					</tbody>
+					</form>
 				</table>
 			</div>
 			<h4 style="margin:40px 0; font-size:20px">Chọn hình thức thanh toán</h4>

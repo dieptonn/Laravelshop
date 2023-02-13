@@ -55,10 +55,8 @@
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
-									
-										{{ csrf_field() }}
+
 									<input class="cart_quantity_input" type="number" name="cart_qty[{{$cart['session_id']}}]" value="{{$cart['product_qty']}}" min="1">
-										{{-- <input type="hidden" value="" name="rowId_cart" class="form-control"> --}}
 										
 								</div>
 							</td>
@@ -71,6 +69,7 @@
 						</tr>
 						
                         @endforeach
+						<?php Session::put('total',$total) ?>
 						<tr>
 							<td>
 								<div >

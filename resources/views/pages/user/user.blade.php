@@ -17,7 +17,7 @@
 
     <div class="form-group">
       <label for="phone">SDT</label>
-      <input type="number" class="form-control" id="phone" value ="{{$info->customer_phone}}">
+      <input type="text" class="form-control" id="phone" value ="{{$info->customer_phone}}">
     </div>
 
         </table>

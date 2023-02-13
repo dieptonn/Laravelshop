@@ -153,12 +153,18 @@ class ProductController extends Controller
         ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
         ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
         ->where('tbl_category_product.category_id',$category_id)->whereNotIn('tbl_product.product_id',[$product_id])->get();
+        // $rate_comment = DB::table('tbl_ratecomment')->where('product_id',$product_id)->get();
         
+        $rate_comment = DB::table('tbl_ratecomment')
+        ->join('tbl_product','tbl_ratecomment.product_id','=','tbl_product.product_id')
+        ->join('tbl_customers','tbl_ratecomment.customer_id','=','tbl_customers.customer_id')
+        ->where('tbl_product.product_id',$product_id)->get();
         return view('pages.products.show_details',[
             'cate_product' => $cate_product,
             'brand_product' => $brand_product,
             'details_product' => $details_product,
-            'related_product' => $related_product
+            'related_product' => $related_product,
+            'rate_comment' => $rate_comment,
         ]);
     }
 }

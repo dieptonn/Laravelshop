@@ -55,7 +55,7 @@
 								<?php
 									}
 								?>
-								<li><a href="#"><i class="fa fa-star"></i> Yêu thích</a></li>
+								
 								
 								<li><a href="{{URL::to('/show-cart-ajax')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
 								
@@ -97,7 +97,7 @@
 								<li><a href="{{URL::to('/')}}" class="active">Trang chủ</a></li>
 								<li><a href="{{URL::to('/show-info/'.$customer_id)}}">Tài khoản</a></li>
 								<li><a href="{{URL::to('/show-cart-ajax')}}">Giỏ hàng</a></li>
-								<li><a href="contact-us.html">Liên hệ</a></li>
+								<li><a href="">Liên hệ</a></li>
 							</ul>
 						</div>
 					</div>
@@ -214,7 +214,7 @@
 								<ul class="nav nav-pills nav-stacked">
 							@foreach ($brand_product as $key=> $brand)
 
-									<li><a href="{{URL::to('/thuong-hieu-san-pham/'.$brand->brand_id)}}"> <span class="pull-right">(50)</span>{{$brand->brand_name}}</a></li>
+									<li><a href="{{URL::to('/thuong-hieu-san-pham/'.$brand->brand_id)}}"> <span class="pull-right"></span>{{$brand->brand_name}}</a></li>
 							@endforeach		
 								</ul>
 							</div>

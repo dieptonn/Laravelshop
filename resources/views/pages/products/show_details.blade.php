@@ -21,7 +21,7 @@
 									@csrf
 									<span  >
 									<span>{{number_format($details_product->product_price)}} VNĐ</span>
-									<label>Số lượng: </label>
+									{{-- <label>Số lượng: </label> --}}
 									{{-- <input name="qty" type="number" min="1" value="1" />
 									<input name="productid_hidden" type="hidden" value="{{$details_product->product_id}}" /> --}}
 									<input type="hidden" value="{{$details_product->product_id}}" class="cart_product_id_{{$details_product->product_id}}">
@@ -31,7 +31,7 @@
 												<input type="hidden" value="1" class="cart_product_qty_{{$details_product->product_id}}">
 									<button style="margin-bottom: 10px" type="button" class="btn btn-default add-to-cart" data-id_product="{{$details_product->product_id}}" name="add-to-cart">Thêm vào giỏ hàng</button>
 										<i class="fa fa-shopping-cart"></i>
-										Thêm giỏ hàng
+										
 									</button>
 								</span>
 								</form>
@@ -64,29 +64,38 @@
 								<p style="padding: 20px">{!!$details_product->product_content!!}</p>
 								
 							</div>
-							<div class="tab-pane fade" id="reviews" >
-								<div class="col-sm-12">
-									<ul>
-										<li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
-										<li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
-										<li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
-									</ul>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-									<p><b>Write Your Review</b></p>
-									
-									<form action="#">
-										<span>
-											<input type="text" placeholder="Your Name"/>
-											<input type="email" placeholder="Email Address"/>
-										</span>
-										<textarea name="" ></textarea>
-										<b>Rating: </b> <img src="images/product-details/rating.png" alt="" />
-										<button type="button" class="btn btn-default pull-right">
-											Submit
-										</button>
-									</form>
-								</div>
-							</div>
+									<div class="tab-pane fade" id="reviews" >
+										<div class="col-sm-12">
+											<?php	$customer_id = Session::get('customer_id'); ?>
+											<h3>Bình luận: </h3>@foreach ($rate_comment as $rateComment)
+												<p style="color: #19830d">{!!$rateComment->customer_name!!}: {!!$rateComment->comment!!}</p>
+													@endforeach
+													<?php $rateComment=  $rate_comment[0];?>
+											<div style="margin-left: 20px" class="stars">
+												<form action="{{URL::to('/rate-comment/'.$rateComment->product_id)}}" method="post">
+													{{ csrf_field() }}
+													<input class="star star-5" id="star-5" type="radio" name="rate" value="5"/>
+													<label class="star star-5" for="star-5"></label>
+													<input class="star star-4" id="star-4" type="radio" name="rate" value="4"/>
+													<label class="star star-4" for="star-4"></label>
+													<input class="star star-3" id="star-3" type="radio" name="rate" value="3"/>
+													<label class="star star-3" for="star-3"></label>
+													<input class="star star-2" id="star-2" type="radio" name="rate" value="2"/>   
+													<label class="star star-2" for="star-2"></label>
+													<input class="star star-1" id="star-1" type="radio" name="rate" value="1"/>
+													<label class="star star-1" for="star-1"></label>
+													<input type="hidden" name="customer_id" value="{{$customer_id}}">
+													<div class="mb-3">
+														<label for="exampleInputEmail1" class="form-label">Bình luận của bạn</label>
+														<input type="text" name="comment" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+														<div id="emailHelp" class="form-text">Xin vui lòng để lại đánh giá sản phẩm.</div>
+													</div>
+													<button type="submit" class="btn btn-default">Submit</button>
+												</form>
+											</div>
+										
+										</div>
+									</div>
 						</div>	
 							
 							
@@ -106,18 +115,26 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 										<div class="productinfo text-center">
-											<img src="{{asset('public/uploads/product/'.$related->product_image)}}" alt="" />
-											<h2>{{number_format($related->product_price)}}$</h2>
-											<p>{{$related->product_name}}</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+											<form>
+												{{-- {{ csrf_field() }} --}}
+												@csrf
+												<input type="hidden" value="{{$related->product_id}}" class="cart_product_id_{{$related->product_id}}">
+												<input type="hidden" value="{{$related->product_name}}" class="cart_product_name_{{$related->product_id}}">
+												<input type="hidden" value="{{$related->product_image}}" class="cart_product_image_{{$related->product_id}}">
+												<input type="hidden" value="{{$related->product_price}}" class="cart_product_price_{{$related->product_id}}">
+												<input type="hidden" value="1" class="cart_product_qty_{{$related->product_id}}">
+												{{-- <input name="qty" type="hidden" value="1" />
+												<input name="productid_hidden" type="hidden" value="{{$related->product_id}}"/> --}}
+												<a  href="{{URL::to('chi-tiet-san-pham/'.$related->product_id)}}">
+												<img src="{{asset('public/uploads/product/'.$related->product_image)}}" alt="" />
+												<h2>{{number_format($related->product_price)}} VNĐ</h2>
+												<p>{{$related->product_name}}</p>
+												</a>
+												
+												<button style="margin-bottom: 10px" type="button" class="btn btn-default add-to-cart" data-id_product="{{$related->product_id}}" name="add-to-cart">Thêm vào giỏ hàng</button>
+											</form>
 										</div>
 									
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Yêu thích</a></li>
-										<li><a href="#"><i class="fa fa-plus-square"></i>So sánh</a></li>
-									</ul>
 								</div>
 							</div>
 						</div>

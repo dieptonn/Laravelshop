@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
@@ -17,5 +18,16 @@ class UserController extends Controller
             'brand_product' => $brand_product,
             'user_info'=>$user_info
         ]);
+    }
+
+    public function rate_comment(Request $request, $product_id){
+        $data = array();
+        $data['customer_id'] = $request->customer_id;
+        $data['product_id'] = $product_id;
+        $data['rate'] = $request->rate;
+        $data['comment'] = $request->comment;
+        DB::table('tbl_ratecomment')->insert($data);
+
+        return Redirect::back();
     }
 }
