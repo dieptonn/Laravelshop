@@ -115,22 +115,24 @@ class CheckoutController extends Controller
         $order_id = DB::table('tbl_order')->insertGetId($order_data);
 
         //insert order details
-        $content = Cart::content();
+        // $content = Cart::content();
+        $cart = Session::get('cart');
 
-        foreach($content as $v_content){
+        foreach($cart as $v_content){
             $order_d_data = array();
         $order_d_data['order_id'] = $order_id;
-        $order_d_data['product_id'] = $v_content->id;
-        $order_d_data['product_name'] = $v_content->name;
-        $order_d_data['product_price'] = $v_content->price;
-        $order_d_data['product_sales_quantity'] = $v_content->qty;
+        $order_d_data['product_id'] = $v_content['product_id'];
+        $order_d_data['product_name'] = $v_content['product_name'];
+        $order_d_data['product_price'] = $v_content['product_price'];
+        $order_d_data['product_sales_quantity'] = $v_content['product_qty'];
         DB::table('tbl_order_details')->insert($order_d_data);
         }
         if($payment_data['payment_method'] == 1){
             echo 'Thanh toán bằng thẻ ATM';
         }elseif($payment_data['payment_method'] == 2){
             // echo 'Thanh toán bằng tiền mặt';
-            Cart::destroy();
+            // Cart::destroy();
+            Session::forget('cart');
             $cate_product = DB::table('tbl_category_product')->where('category_status','1')->orderby('category_id','desc')->get();
             $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderby('brand_id','desc')->get();
             return view('pages.checkout.handcash',[
