@@ -219,7 +219,7 @@ ul.sidebar-menu li a.active i {
     left:0;
     right:0;
     z-index:1002;
-    background:rgb(240, 188, 180);
+    background:#444444;
     -webkit-transition:all .3s ease-in-out;
     -moz-transition:all .3s ease-in-out;
     -o-transition:all .3s ease-in-out;
@@ -239,7 +239,7 @@ ul.sidebar-menu li a.active i {
     width:100%;
 }
 .brand {
-    background:#8b5c7e;
+    background:#000000;
     float:left;
     width:240px;
     height:80px;
