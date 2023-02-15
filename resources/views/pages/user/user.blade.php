@@ -8,16 +8,16 @@
         <table>
             <div class="form-group">
       <label for="name" >Tên khách hàng</label>
-      <input type="text" class="form-control" id="username" value ="{{$info->customer_name}}">
+      <input type="text" class="form-control" id="username" disabled value ="{{$info->customer_name}}">
     </div>
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" class="form-control" id="email" value ="{{$info->customer_email}}">
+      <input type="email" class="form-control" id="email" disabled value ="{{$info->customer_email}}">
     </div>
 
     <div class="form-group">
       <label for="phone">SDT</label>
-      <input type="text" class="form-control" id="phone" value ="{{$info->customer_phone}}">
+      <input type="text" class="form-control" id="phone" disabled value ="{{$info->customer_phone}}">
     </div>
 
         </table>

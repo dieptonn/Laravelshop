@@ -5,12 +5,18 @@
 		<div class="container">
 			<div class="breadcrumbs">
 				<ol class="breadcrumb">
-				  <li><a href="#">Trang chủ</a></li>
+				  <li><a href="{{URL::to('/')}}">Trang chủ</a></li>
 				  <li class="active">Thanh toán giỏ hàng</li>
 				</ol>
 			</div><!--/breadcrums-->
 
-			
+								<?php
+	$message = Session::get('message');
+	if($message){
+		echo '<span class= "text-danger">',$message,'</span>';
+		Session::put('message',null);
+	}
+	?>
 
 			<div class="register-req">
 				<p>Làm ơn đăng ký hoặc đăng nhập để thanh toán giỏ hàng và xem lịch sử mua hàng</p>
@@ -26,7 +32,7 @@
 								<form method="POST" action="{{URL::to('/save-checkout-customer')}}">
                                     {{ csrf_field() }}
 									<input type="text" name="shipping_name" placeholder="Họ tên*">
-									<input type="text" name="shipping_email" placeholder="Email*">
+									<input type="text" name="shipping_email" placeholder="Email">
 									<input type="text" name="shipping_address" placeholder="Địa chỉ*">
 									<input type="text" name="shipping_phone" placeholder="SĐT*">
 									<textarea name="shipping_notes" placeholder="Ghi chú đơn hàng" rows="16"></textarea>

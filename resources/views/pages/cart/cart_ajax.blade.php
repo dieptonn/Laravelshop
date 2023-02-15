@@ -80,7 +80,8 @@
 							</td>
 							
 						</tr>
-					<div style="padding: 30px" class="col-sm-6">
+					<table class="table-responsive cart_info">
+						<div style="padding: 30px; margin-top: 50px; border:0.2px solid;border-color:grey" class="col-sm-6">
 					<div class="total_area">
 						<ul>
 							<li>Tổng tiền<span>{{number_format($total,0,',','.')}} VNĐ</span></li>
@@ -105,6 +106,7 @@
 								
 					</div>
 				</div>
+					</table>
 						@else
 						<td colspan="5"><center><?php echo "Làm ơn thêm sản phẩm vào giỏ"; ?></center></td>
 						@endif

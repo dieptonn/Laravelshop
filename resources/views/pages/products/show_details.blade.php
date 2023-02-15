@@ -68,7 +68,8 @@
 										<div class="col-sm-12">
 											<?php	$customer_id = Session::get('customer_id'); ?>
 											<h3>Bình luận: </h3>@foreach ($rate_comment as $rateComment)
-												<p style="color: #19830d">{!!$rateComment->customer_name!!}: {!!$rateComment->comment!!}</p>
+												<p style="color: #19830d">{{$rateComment->customer_name}}: {{$rateComment->comment}}</p>
+												<input class="star star-{{$rateComment->rate}}" id="star-{{$rateComment->rate}}" type="radio" name="rate" disabled value="{{$rateComment->rate}}"/>
 													@endforeach
 													<?php $rateComment=  $rate_comment[0];?>
 											<div style="margin-left: 20px" class="stars">

@@ -57,18 +57,30 @@ class CheckoutController extends Controller
     }
 
     public function save_checkout_customer(Request $request){
-        $data = array();
+        $cart = Session::get('cart');
+        if($cart){
+            $data = array();
         $data['shipping_name'] = $request->shipping_name;
         $data['shipping_email'] = $request->shipping_email;
         $data['shipping_address'] = $request->shipping_address;
         $data['shipping_phone'] = $request->shipping_phone;
         $data['shipping_notes'] = $request->shipping_notes;
-
-        $shipping_id= DB::table('tbl_shipping')->insertGetId($data);
+        if($data['shipping_name'] && $data['shipping_address'] && $data['shipping_phone']!= NULL){
+            $shipping_id= DB::table('tbl_shipping')->insertGetId($data);
         Session::put('shipping_id', $shipping_id);
         // Session::put('customer_name',$request->customer_name);
 
         return Redirect::to('/payment');
+        }else{
+             Session::put('message','Xin vui lòng nhập đầy đủ thông tin Tên, SĐT, địa chỉ người nhận!');
+             return Redirect::back();
+        }
+        }else{
+            Session::put('message','Xin vui lòng nhập thêm sản phẩm vào giỏ trước khi thanh toán!');
+             return Redirect::back();
+        }
+        
+        
     }
     public function payment(){
         $cate_product = DB::table('tbl_category_product')->where('category_status','1')->orderby('category_id','desc')->get();
@@ -92,6 +104,7 @@ class CheckoutController extends Controller
             Session::put('customer_id',$result->customer_id);
             return Redirect::to('/checkout');
         }else{
+            Session::put('message','Sai tài khoản hoặc mật khẩu!');
             return Redirect::back(); // nên back hay nên trả về trang chủ hoặc giỏ hàng hơn?
         }
 
@@ -99,13 +112,15 @@ class CheckoutController extends Controller
 
     public function order_place(Request $request){
         //insert payment method
-        $payment_data = array();
+        $total = Session::get('total');
+        if($total){
+            $payment_data = array();
         $payment_data['payment_method'] = $request->payment_option;
         $payment_data['payment_status'] = 'Đang chờ xử lý';
         $payment_id = DB::table('tbl_payment')->insertGetId($payment_data);
 
         //insert order
-        $total = Session::get('total');
+        
         $order_data = array();
         $order_data['customer_id'] = Session::get('customer_id');
         $order_data['shipping_id'] = Session::get('shipping_id');
@@ -142,6 +157,11 @@ class CheckoutController extends Controller
         }else{
             echo 'Thanh toán bằng thẻ ghi nợ';
         }
+        }else{
+            // Session::put('message','Sai tài khoản hoặc mật khẩu!');
+            return Redirect::back();
+        }
+        
         // return Redirect::to('/payment');
         
     }

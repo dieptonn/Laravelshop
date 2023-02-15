@@ -5,6 +5,13 @@
 			<div class="row">
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
+						<?php
+	$message = Session::get('message');
+	if($message){
+		echo '<span class= "text-danger">',$message,'</span>';
+		Session::put('message',null);
+	}
+	?>
 						<h2>Đăng nhập tài khoản</h2>
 						<form action="{{URL::to('/login-customer')}}" method="POST">
 							{{ csrf_field() }}

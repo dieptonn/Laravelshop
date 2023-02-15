@@ -880,10 +880,15 @@ h2.title {
 
 
 .productinfo p{
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: #696763;
+      font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #696763;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left:25px ;
 }
 
 .productinfo img{
@@ -1222,7 +1227,7 @@ h2.title {
   border: 1px solid #F7F7F0;
   overflow: hidden;
   padding-bottom: 60px;
-  padding-left: 60px;
+  padding-left: 40px;
   padding-top: 60px;
   position: relative;
 }
@@ -2558,3 +2563,10 @@ div.stars {
             content: '\f006';
             font-family: FontAwesome;
             }
+
+            #limit-text {
+            max-width: 200px  ; /* giới hạn chiều rộng của phần tử p */
+            white-space: nowrap; /* không cho xuống dòng */
+            overflow: hidden; /* ẩn nội dung vượt quá chiều rộng */
+            text-overflow: ellipsis; /* thêm dấu ba chấm (…) ở cuối phần hiển thị */
+          }
